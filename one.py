@@ -1,19 +1,15 @@
-
-
-
-def throughlist(onelist):
+def count_increase(input_list):
     old = None
     counter = 0
-    for x in onelist:
+    for x in input_list:
         if old != None:
             if int(x) > old:
-                #print(x + " is greater than " + str(old))
                 counter += 1
         old = int(x)
     return counter
 
-def printonelines():
-    oneinput = open("inputgithub", "r")
+def create_list():
+    oneinput = open("inputone", "r")
     lines = oneinput.read().splitlines()
     oneinput.close()
     return lines

@@ -12,15 +12,18 @@ def convert_list(input_list):
 
 def sub_movement(input_new_list):
     x = 0
-    y = 0
+    depth = 0
+    aim = 0
     for move in input_new_list:
         if move[0] == "down":
-            y += move[1]
+            aim += move[1]
         elif move[0] == "up":
-            y -= move[1]
+            aim -= move[1]
         else:
             x += move[1]
-    final_value = x * y
+            if aim != 0:
+                depth += (move[1] * aim)
+    final_value = x * depth
     return final_value
 
 
