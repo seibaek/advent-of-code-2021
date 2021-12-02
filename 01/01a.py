@@ -9,7 +9,7 @@ def count_increase(input_list):
     return counter
 
 def create_list():
-    oneinput = open("inputone", "r")
+    oneinput = open("input01", "r")
     lines = oneinput.read().splitlines()
     oneinput.close()
     return lines

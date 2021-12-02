@@ -1,5 +1,5 @@
 def create_list():
-    thirdinput = open("inputtwo", "r")
+    thirdinput = open("input02", "r")
     new_list = thirdinput.read().splitlines()
     thirdinput.close()
     return new_list
