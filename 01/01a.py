@@ -9,14 +9,14 @@ def count_increase(input_list):
     return counter
 
 def create_list():
-    oneinput = open("input01", "r")
+    oneinput = open("01/input01", "r")
     lines = oneinput.read().splitlines()
     oneinput.close()
     return lines
 
 
-def onesolution():
-    y = printonelines()
-    print(throughlist(y))
+def one_solution():
+    y = create_list()
+    print(count_increase(y))
 
-onesolution()
+one_solution()
