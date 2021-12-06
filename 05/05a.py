@@ -27,7 +27,7 @@ def filter_blanks(input_list):
 
 def solution_five(input_list):
     count_list = []
-    # solution_list = []
+    solution_list = set()
     counter = 0
     for h, hv in enumerate(input_list):
         # print(hv[0][1])
@@ -42,25 +42,28 @@ def solution_five(input_list):
         #     # print(abs(int(y1) - int(y2)))
             for j in range(abs(int(y1) - int(y2)) - 1):
                 if int(y1) < int(y2):
-                    if count_list.count([y2, str(int(x2) + j + 1)]) == 1:
-                        counter += 1
-                    count_list.append([x1, str(int(y1) + j + 1)])
+                    if count_list.count([y2, str(int(x2) + j + 1)]) >= 1:
+                        solution_list.add(str([x1, str(int(y1) + j + 1)]))
+                    else:
+                        count_list.append([x1, str(int(y1) + j + 1)])
                 else:
-                    if count_list.count([str(int(y2) + j + 1), x2]) == 1:
-                        counter += 1
-                    count_list.append([x2, str(int(y2) + j + 1)])
+                    if count_list.count([str(int(y2) + j + 1), x2]) >= 1:
+                        solution_list.add(str([x2, str(int(y2) + j + 1)]))
+                    else:
+                        count_list.append([x2, str(int(y2) + j + 1)])
         if abs(int(x1) - int(x2)) > 0:
             for j in range(abs(int(x1) - int(x2)) - 1):
                 if int(x1) < int(x2):
-                    if count_list.count([y1, str(int(x1) + j + 1)]) == 1:
-                        counter += 1
-                    count_list.append([y1, str(int(x1) + j + 1)])
+                    if count_list.count([y1, str(int(x1) + j + 1)]) >= 1:
+                        solution_list.add(str([y1, str(int(x1) + j + 1)]))
+                    else:
+                        count_list.append([y1, str(int(x1) + j + 1)])
                 else:
-                    if count_list.count([y2, str(int(x2) + j + 1)]) == 1:
-                        counter += 1
-                    count_list.append([y2, str(int(x2) + j + 1)])
-    print(counter)
-    print("hello")
+                    if count_list.count([y2, str(int(x2) + j + 1)]) >= 1:
+                        solution_list.add(str([y2, str(int(x2) + j + 1)]))
+                    else:
+                        count_list.append([y2, str(int(x2) + j + 1)])
+    print(len(solution_list))
 
 process_points(create_list())
 
