@@ -12,8 +12,6 @@ def somefun(input_list, index, bin_value):
         return input_list
 
 def compare_binary(input_list, index, bin_value):
-    # print(index)
-    # print(input_list)
     one = 0
     zero = 0
     for item in input_list:
@@ -22,17 +20,13 @@ def compare_binary(input_list, index, bin_value):
         else:
             zero += 1
     if one >= zero and bin_value == '1':
-        x = strip_list(input_list, '1', index)
-        return x
+        return strip_list(input_list, '1', index)
     elif one >= zero and bin_value == '0':
-        x = strip_list(input_list, '0', index)
-        return x
+        return strip_list(input_list, '0', index)
     elif zero > one and bin_value == '0':
-        x = strip_list(input_list, '1', index)
-        return x
+        return strip_list(input_list, '1', index)
     else:
-        x = strip_list(input_list, '0', index)
-        return x
+        return strip_list(input_list, '0', index)
 
 def strip_list(input_list, value, index):
     stripped_list = []
