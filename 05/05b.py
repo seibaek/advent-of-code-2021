@@ -53,6 +53,28 @@ def solution_five(input_list):
                         count_list.add(str([str(int(x2) + j), y2]))
                     else:
                         solution_list.add(str([str(int(x2) + j), y2]))
+        if abs(int(x1) - int(x2)) > 0 and abs(int(y1) - int(y2)) > 0:
+            for j in range(abs(int(y1) - int(y2)) + 1):
+                if int(y1) < int(y2) and int(x1) < int(x2):
+                    if str([str(int(x1) + j), str(int(y1) + j)]) not in count_list:
+                        count_list.add(str([str(int(x1) + j), str(int(y1) + j)]))
+                    else:
+                        solution_list.add(str([str(int(x1) + j), str(int(y1) + j)]))
+                if int(y2) < int(y1) and int(x1) < int(x2):
+                    if str([str(int(x1) + j), str(int(y1) - j)]) not in count_list:
+                        count_list.add(str([str(int(x1) + j), str(int(y1) - j)]))
+                    else:
+                        solution_list.add(str([str(int(x1) + j), str(int(y1) - j)]))
+                if int(y1) < int(y2) and int(x2) < int(x1):
+                    if str([str(int(x2) + j), str(int(y2) - j)]) not in count_list:
+                        count_list.add(str([str(int(x2) + j), str(int(y2) - j)]))
+                    else:
+                        solution_list.add(str([str(int(x2) + j), str(int(y2) - j)]))
+                if int(y2) < int(y1) and int(x2) < int(x1):
+                    if str([str(int(x2) + j), str(int(y2) + j)]) not in count_list:
+                        count_list.add(str([str(int(x2) + j), str(int(y2) + j)]))
+                    else:
+                        solution_list.add(str([str(int(x2) + j), str(int(y2) + j)]))
     print(len(solution_list))
 
 
