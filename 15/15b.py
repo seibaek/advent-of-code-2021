@@ -41,7 +41,9 @@ for v in big_list:
     path_costs.append(row_costs.copy())
 
 path_costs[0][0] = 0
-unvisitheu = unvisited.copy()
+unvisitheu = {}
+unvisitheu["0,0"] = 0
+visit_count = unvisited.copy()
 directions = [[1,0],[-1,0],[0,1],[0,-1]]
 
 rows = len(path_costs)
@@ -49,10 +51,10 @@ cols = len(path_costs[0])
 
 count = 0
 while unvisited:
-    print(count)
+    # print(count)
     count += 1
     current = min(unvisitheu, key=unvisitheu.get)
-    print(current)
+    # print(current)
     coord = current.split(",")
     for direction in directions:
         dx = int(coord[0]) + direction[0]
@@ -63,9 +65,17 @@ while unvisited:
                 unvisited[dxy] = unvisited[current] + path_costs[dy][dx]
                 unvisitheu[dxy] = unvisited[current] + path_costs[dy][dx] + (rows - 1 - dy) + (cols - 1 - dx)
     visited[current] = unvisited[current]
+    if visit_count[current] == float("inf"):
+        visit_count[current] = 1
+    else:
+        visit_count[current] += 1
     if current == (str(rows - 1) + "," + str(cols - 1)):
         break
     unvisited.pop(current)
     unvisitheu.pop(current)
 
 print(visited[str(rows - 1) + "," + str(cols - 1)])
+
+for value in visit_count:
+    if visit_count[value] > 1 and visit_count[value] != float("inf"):
+        print(value)
