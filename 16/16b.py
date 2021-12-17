@@ -42,6 +42,15 @@ bin_dic = {
     "E":"1110",
     "F":"1111",
 }
+op_dic = {
+    "0":"sum",
+    "1":"product",
+    "2":"min",
+    "3":"max",
+    "5":"greaterthan",
+    "6":"lessthan",
+    "7":"equal to",
+}
 
 for v in input_string:
     if v != "\n":
@@ -65,7 +74,8 @@ def decode(in_string):
     version_total += int(V, 2)
     T = in_string[3:6]
     # print(T)
-    if (hex_dic["0" + T]) != "4":
+    TID = (hex_dic["0" + T])
+    if TID != "4":
         I = in_string[6]
         if I == "0": # total length of bits
             L = int(in_string[7:22], 2)
