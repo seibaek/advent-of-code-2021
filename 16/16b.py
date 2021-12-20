@@ -1,4 +1,4 @@
-aoc_input = open("input16.txt", "r")
+aoc_input = open("input16", "r")
 input_string = aoc_input.read()
 aoc_input.close()
 
@@ -58,24 +58,23 @@ for v in input_string:
 
 print(new_string)
 
-version_total = 0
+equate = []
 
 def decode(in_string):
     print(in_string)
     if in_string is None:
         return
-    if len(in_string) < 3:
+    if len(in_string) < 1:
         return
     if int(in_string) < 1:
         return
     V = in_string[:3]
     # print(V)
-    global version_total
-    version_total += int(V, 2)
     T = in_string[3:6]
     # print(T)
     TID = (hex_dic["0" + T])
     if TID != "4":
+        equate.append(op_dic[TID])
         I = in_string[6]
         if I == "0": # total length of bits
             L = int(in_string[7:22], 2)
@@ -85,14 +84,18 @@ def decode(in_string):
             decode(in_string[18:])
     else:
         out_string = in_string[6:]
-        decode(literal(out_string))
+        decode(literal(out_string, ""))
 
-def literal(in_string):
+def literal(in_string, in_bin):
+    out_string = in_bin
+    out_string += in_string[1:5]
     if in_string[0] == "1":
-        return literal(in_string[5:])
-    # bin_int = int(in_string[1:5], 2)
+        return literal(in_string[5:], out_string)
     else:
+        equate.append(int(out_string, 2))
         return in_string[5:]
+
+
 
 def operator(in_string):
     if in_string[0] == "0":
@@ -103,4 +106,4 @@ def operator(in_string):
         decode(in_string[18:])
 decode(new_string)
 
-print(version_total)
+print(equate)
